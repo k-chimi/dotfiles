@@ -5,8 +5,8 @@
     bg = ansi-colors.bg;
   in  
     writeText "shell-motd.sh" ''
-      # [ ! -z "$__SHELL_MOTD" ] && return
-      # export __SHELL_MOTD=1
+      [ -z "$__SHELL_MOTD" ] && return
+      unset __SHELL_MOTD
       
       {
         print-title() {
@@ -27,7 +27,8 @@
 
             echo -n "$3"
 
-            for x in $4; do
+            it=($4)
+            for x in ''${it[@]}; do
               if [ "$i" -lt 15 ]; then
                 if [[ "$x" =~ $'\n' ]]; then
                   sep=$'\n'"$3"
@@ -40,7 +41,8 @@
                 echo -n "$sep$(printf ''\'${fg.ansi256 "223"}%s${fg.reset}''\' "''${x#$'\n'}")"
                 (( i ++ ))
               else
-                (( more_count ++ ))
+                more_count="$(( "''${#it[@]}" - "$i" ))"
+                break
               fi
             done
 

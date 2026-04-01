@@ -11,6 +11,8 @@ for profile in $__SHELL_PROFILES; do
   if [[ "$profile" == "$"* ]]; then
     profile="$(eval "echo $profile")"
   fi
+
+  [ -z "$profile" ] && continue
   
   if [ -d "$profile" ]; then
     for item in "$profile"/*; do
