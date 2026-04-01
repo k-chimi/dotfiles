@@ -1,9 +1,9 @@
+[ ! -z "$__SHELL_PROFILES_LOADED" ] && return $1
+
 case $- in
   *i*) ;;
   *) return $1 ;;
 esac
-
-[ ! -z "$__SHELL_PROFILES_LOADED" ] && return $1
 
 __SHELL_PROFILES_LOADED=1
   

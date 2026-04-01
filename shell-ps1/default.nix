@@ -15,9 +15,7 @@
         export PS1="$PROMPT_FMT"
 
         export PROMPT_COMMAND="''${PROMPT_COMMAND/%/;}. ${prompt-command}/__prompt_command \$?"
-        export PROMPT_COMMAND_ADDITIONAL=()
-        PROMPT_COMMAND_ADDITIONAL+=("prompt_nix")
-        PROMPT_COMMAND_ADDITIONAL+=("prompt_git")
+        export PROMPT_COMMAND_ADDITIONAL="prompt_nix prompt_git"
 
         export PROMPT_STATUS=""
         export PROMPT_STATUS_FMT='${fg.ansi256 "197"}%03d${fg.reset} '
