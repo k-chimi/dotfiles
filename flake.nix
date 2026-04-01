@@ -30,6 +30,7 @@
             gnugrep
             man
             gnumake
+            htop
           ]) ++ (with packages; [
             kchimi-tmux
             kchimi-helix
