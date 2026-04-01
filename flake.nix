@@ -61,6 +61,10 @@
             devShells.kchimi-shell-profile
             devShells.kchimi-shell-ps1
           ];
+
+          shellHook = ''
+            . ${defaultPackage}/share/bash-completion/bash_completion
+          '';
         };
     };
   };
