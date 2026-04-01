@@ -8,6 +8,10 @@ esac
 __SHELL_PROFILES_LOADED=1
   
 for profile in $__SHELL_PROFILES; do
+  if [[ "$profile" == "$"* ]]; then
+    profile="$(eval "echo $profile")"
+  fi
+  
   if [ -d "$profile" ]; then
     for item in "$profile"/*; do
       . "$item"

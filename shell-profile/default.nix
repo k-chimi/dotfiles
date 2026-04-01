@@ -7,6 +7,11 @@
 
     shellHook = ''
       export TZDIR="${tzdata}/share/zoneinfo"
-      export __SHELL_PROFILES="${profiles} $__SHELL_PROFILES ${shell-motd}"
+
+      if [ -z "$__SHELL_MOTD" ]; then
+        export __SHELL_PROFILES="${profiles} $__SHELL_PROFILES \$__SHELL_MOTD"
+      fi
+
+      export __SHELL_MOTD="${shell-motd}"
     '';
   }
