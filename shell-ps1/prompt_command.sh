@@ -30,8 +30,7 @@ _:prompt_nix() {
 }
 
 _:prompt_git() {
-  local NOW="$(date +%s)"          
-  if [[ "$PWD" == "$PROMPT_GIT_PREVPATH" ]] && [[ "$(( NOW - PROMPT_GIT_TIME ))" -le 5 ]]; then
+  if [[ "$PWD" == "$PROMPT_GIT_PREVPATH" ]] && [[ "$(( NOW - PROMPT_GIT_TIME ))" -le 10 ]]; then
     return
   fi
 
@@ -54,6 +53,7 @@ _:prompt_git() {
 }
 
 _:prompt_command() {
+  local NOW="$(date +%s)"
   local status_code="$1"
 
   if [ "$PS1" == '\s-\v\$ ' ]; then
@@ -69,7 +69,7 @@ _:prompt_command() {
     fi
   fi
 
-  for cmd in ${PROMPT_COMMAND_ADDITIONAL[@]}; do
+  for cmd in $PROMPT_COMMAND_ADDITIONAL; do
     "_:$cmd"
   done
   
