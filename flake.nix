@@ -31,6 +31,8 @@
             man
             gnumake
             htop
+            less
+            bash-completion
           ]) ++ (with packages; [
             kchimi-tmux
             kchimi-helix
