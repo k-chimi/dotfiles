@@ -20,6 +20,10 @@ _:prompt_cwd() {
   PROMPT_RAW_CWD="${PWD%/}/"
   PROMPT_CWD=""
 
+  if [[ "${PROMPT_RAW_CWD}" =~ ^"${HOME%/}"(/.*|$) ]]; then
+    PROMPT_RAW_CWD="~${BASH_REMATCH[1]}"
+  fi
+
   if [ "${#PROMPT_RAW_CWD}" -ge 46 ]; then
     if [ ! -z "$PROMPT_GIT_PROJECT" ] && [[ "${PROMPT_RAW_CWD}" == "${PROMPT_GIT_PROJECT%/}/"* ]]; then
       PROMPT_CWD="$(basename ${PROMPT_GIT_PROJECT%/})/${PROMPT_RAW_CWD#${PROMPT_GIT_PROJECT%/}/}"

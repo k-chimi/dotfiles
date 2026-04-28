@@ -13,11 +13,11 @@
       shellHook = ''
         if [ -z "$__SHELL_PS1_INSTALLED" ]; then
           export __SHELL_PS1_INSTALLED=1
-          export PROMPT_FMT=''\'''${PROMPT_STATUS@P}''\'"${ansi-colors.bold}${fg.light_green}\u@\H${ansi-colors.reset} ${ansi-colors.bold}"''\'''${PROMPT_CWD@P}''\'"${ansi-colors.reset}"''\'''${PROMPT_BRANCH@P}''${PROMPT_BRANCH_CHANGES@P}''${PROMPT_NIX_SHELL@P}\n''\'"\$ "
-          export PS1="$PROMPT_FMT"
-
+          export PROMPT_FMT=''\'\033]0;\u@\h ''${PROMPT_CWD@P}\007''${PROMPT_STATUS@P}''\'"${ansi-colors.bold}${fg.light_green}\u@\h${ansi-colors.reset} ${ansi-colors.bold}"''\'''${PROMPT_CWD@P}''\'"${ansi-colors.reset}"''\'''${PROMPT_BRANCH@P}''${PROMPT_BRANCH_CHANGES@P}''${PROMPT_NIX_SHELL@P}\n''\'"\$ "
           export PROMPT_COMMAND="''${PROMPT_COMMAND/%/;}eval \''${__SHELL_PS1}"
         fi
+
+        export PS1="$PROMPT_FMT"
 
         export __SHELL_PS1=". ${prompt-command}/__prompt_command \$?"
         export PROMPT_COMMAND_ADDITIONAL="prompt_cwd prompt_nix prompt_git"
