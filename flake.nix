@@ -33,6 +33,8 @@
             htop
             less
             bash-completion
+            nil
+            nixd
           ]) ++ (with packages; [
             kchimi-tmux
             kchimi-helix
