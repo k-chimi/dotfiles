@@ -7,6 +7,12 @@
     writeText "shell-motd.sh" ''
       [ -z "$__SHELL_MOTD" ] && return
       unset __SHELL_MOTD
+
+      if [ "$__previous_nix_gcroot" != "$NIX_GCROOT" ]; then
+        export __previous_nix_gcroot="$NIX_GCROOT"
+      else
+        return
+      fi
       
       {
         print-title() {
